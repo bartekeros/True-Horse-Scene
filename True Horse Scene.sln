@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "True Horse Scene", "True Horse Scene\True Horse Scene.csproj", "{DCF1DDCA-6D09-4E20-A77D-2EA73B3A1D10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCF1DDCA-6D09-4E20-A77D-2EA73B3A1D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF1DDCA-6D09-4E20-A77D-2EA73B3A1D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF1DDCA-6D09-4E20-A77D-2EA73B3A1D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF1DDCA-6D09-4E20-A77D-2EA73B3A1D10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8570399A-80BE-4129-AE84-41836B2D601E}
+	EndGlobalSection
+EndGlobal
