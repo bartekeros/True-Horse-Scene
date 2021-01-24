@@ -6,26 +6,14 @@ namespace True_Horse_Scene
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
-        private SpriteFont spriteFont;
-
-        public static Texture2D spriteTexture;
-        private Texture2D horseTexture;
-        private float horseScaling = 0.1f;
-        private Vector2 horsePosition = new Vector2(screenWidth / 2, screenHeight - 20);
-
-        public static readonly int screenHeight = 500;
-        public static readonly int screenWidth = 500;
-
         private Sprite sprite;
         private LevelMap levelMap;
 
-        public static bool isColidate;
+        public static bool isHorseColidate;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Globals.graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -38,21 +26,24 @@ namespace True_Horse_Scene
             levelMap = new LevelMap();
             sprite.playerPosition = new Vector2(0, 0);
 
-            graphics.PreferredBackBufferHeight = screenHeight;
-            graphics.PreferredBackBufferWidth = screenWidth;
+            Globals.graphics.PreferredBackBufferHeight = Globals.screenHeight;
+            Globals.graphics.PreferredBackBufferWidth = Globals.screenWidth;
 
-            graphics.ApplyChanges();
+            Globals.graphics.ApplyChanges();
 
         }
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            spriteTexture = Content.Load<Texture2D>("sprite");
-            horseTexture = Content.Load<Texture2D>("horse");
+            Sprite.spriteTexture = Content.Load<Texture2D>("sprite");
+            Globals.horseTexture = Content.Load<Texture2D>("horse");
+            Globals.grassTexture = Content.Load<Texture2D>("grass");
+            Globals.doorTexture = Content.Load<Texture2D>("door");
+            Globals.wallTexture = Content.Load<Texture2D>("wall");
 
-            spriteFont = Content.Load<SpriteFont>("font");
+            Globals.spriteFont = Content.Load<SpriteFont>("font");
         }
 
         protected override void Update(GameTime gameTime)
@@ -60,7 +51,7 @@ namespace True_Horse_Scene
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            sprite.Move(levelMap, spriteTexture);
+            sprite.Move(levelMap, Sprite.spriteTexture);
          
 
             base.Update(gameTime);
@@ -70,20 +61,12 @@ namespace True_Horse_Scene
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            Globals.spriteBatch.Begin();
 
-            spriteBatch.Draw(spriteTexture, sprite.playerPosition, Color.White);
-            spriteBatch.Draw(horseTexture, horsePosition, null, Color.White, 0, new Vector2(horseTexture.Width/2, horseTexture.Height/2),
-                horseScaling, SpriteEffects.None, 1);
+            levelMap.DrawCurrentLevel(sprite);  
 
-            if (sprite.CheckColidation(horsePosition, 45) == true)
-            {
-                Notification.SpaceInfoMessage(spriteFont, spriteBatch, new Vector2(screenWidth / 2, 20), "Space");
-                isColidate = true;
-            }
-            else { isColidate = false; }
 
-            spriteBatch.End();
+            Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -9,6 +9,7 @@ namespace True_Horse_Scene
 {
     public class Sprite
     {
+        public static Texture2D spriteTexture;
         public Vector2 playerPosition;
         public Vector2 playerPositionCenter;
         public float playerSpeed { get; set; } = 10;
@@ -39,12 +40,12 @@ namespace True_Horse_Scene
                 levelMap.CheckBoundaries(new Vector2(playerPosition.X, playerPosition.Y - playerSpeed), this, tex);
             }
 
-            if (kbState.IsKeyDown(Keys.Space) && Game1.isColidate == true)
+            if (kbState.IsKeyDown(Keys.Space) && Game1.isHorseColidate == true)
             {
                 Environment.Exit(1);
             }
 
-            playerPositionCenter = new Vector2(playerPosition.X + Game1.spriteTexture.Width / 2, playerPosition.Y + Game1.spriteTexture.Height / 2);
+            playerPositionCenter = new Vector2(playerPosition.X + spriteTexture.Width / 2, playerPosition.Y + spriteTexture.Height / 2);
         }
 
         public bool CheckColidation(Vector2 pos, float radius)

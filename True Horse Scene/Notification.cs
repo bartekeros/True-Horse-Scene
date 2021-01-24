@@ -9,14 +9,14 @@ namespace True_Horse_Scene
 {
     public static class Notification
     {
-        public static void SpaceInfoMessage(SpriteFont font, SpriteBatch spriteBatch, Vector2 textPos, string text)
+        public static void SpaceInfoMessage(Vector2 textPos, string text)
         {
-            spriteBatch.DrawString(font, text, new Vector2(textPos.X - text.Length*10, textPos.Y), Color.White);
+            Globals.spriteBatch.DrawString(Globals.spriteFont , text, new Vector2(textPos.X - text.Length*10, textPos.Y), Color.White);
         }
 
-        public static void WinMessage(SpriteFont font, SpriteBatch spriteBatch, Vector2 textPos, string text)
+        public static void WinMessage(Vector2 textPos, string text)
         {
-
+            Globals.spriteBatch.DrawString(Globals.spriteFont, text, textPos, Color.Red);
         }
     }
 }
